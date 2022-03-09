@@ -31,7 +31,7 @@ export class UserService {
   }
 
   getAllUsers(): Observable<User[]> {
-    return this.http.get<User[]>(this.backendService.getBackendURL() + '/users');
+    return this.http.get<User[]>(this.backendService.getBackendURL() + '/users/all');
   }
 
   // A credential is created with a new User inside of it.
@@ -45,6 +45,10 @@ export class UserService {
 
   editUser(id: number, change: User, myHeaders: HttpHeaders): Observable<User> {
     return this.http.put<User>(this.backendService.getBackendURL() + '/users/' + id, change, { headers: myHeaders });
+  }
+
+  followUser(id: number, change: User, myHeaders: HttpHeaders): Observable<User> {
+    return this.http.put<User>(this.backendService.getBackendURL() + '/follow/' + id, change, { headers: myHeaders });
   }
   /*
   editUser(id: number, change: User, ): Observable<User> {
